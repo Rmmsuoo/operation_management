@@ -17,6 +17,21 @@
 	<p th:text="${car.driver.id}"></p>
 	<h4>運転手名</h4>
 	<p th:text="${car.driver.name}"></p>
+	<h4>乗客リスト</h4>
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>乗客名</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="customer : ${car.customers}">
+				<td th:text="${customer.id}"></td>
+				<td th:text="${customer.name}"></td>
+			</tr>
+		</tbody>
+	</table>
 </body>
 
 </html>
