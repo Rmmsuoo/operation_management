@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.entity.Car;
 import com.example.form.CarForm;
@@ -24,8 +25,11 @@ public class CarController {
 	}
 
 	@GetMapping("/index")
-	public String index(Model model, @ModelAttribute CarForm carForm) {
-		List<Car> cars = this.carService.findAll();
+	public String index(Model model, @ModelAttribute CarForm carForm,
+			@RequestParam(value = "carId", required = false) Integer id,
+			@RequestParam(value = "carName", required = false) String name,
+			@RequestParam(value = "carPassengers", required = false) Integer passengers) {
+		List<Car> cars = this.carService.findAll(id, name, passengers);
 		model.addAttribute("cars", cars);
 		return "index";
 	}

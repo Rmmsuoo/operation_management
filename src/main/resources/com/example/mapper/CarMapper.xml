@@ -10,6 +10,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="findAll" resultMap="carMap">
 		SELECT * FROM CARS
+		<where>
+			<if test="carId != null">
+				ID=#{carId}
+			</if>
+			<if test="carName != null">
+				OR NAME = #{carName}
+			</if>
+			<if test="carPassengers != null">
+				OR PASSENGERS = #{carPassengers}
+			</if>
+		</where>
 	</select>
 
 	<insert id="insert" useGeneratedKeys="true" keyColumn="ID"

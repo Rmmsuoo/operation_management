@@ -55,6 +55,22 @@
 		<input type="submit" value="登録する">
 	</div>
 </form>
+<h1>検索フォーム</h1>
+<form th:action="@{/index}" method="get">
+	<div>
+		<label>車両ID</label>
+		<input type="number" name="carId">
+	</div>
+	<div>
+		<label>車両名</label>
+		<input type="text" name="carName">
+	</div>
+	<div>
+		<label>乗員数</label>
+		<input type="number" name="carPassengers">
+	</div>
+	<input type="submit" value="検索">
+</form>
 </body>
 
 </html>
