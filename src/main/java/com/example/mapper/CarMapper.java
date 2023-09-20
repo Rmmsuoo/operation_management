@@ -14,4 +14,5 @@ public interface CarMapper {
 
 	public Car findById(Integer id);
 
+	public void update(Car car);
 }
