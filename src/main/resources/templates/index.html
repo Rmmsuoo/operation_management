@@ -25,7 +25,7 @@
 			<td th:text="${car.name}"></td>
 			<td th:text="${car.passengers}"></td>
 			<td>
-				<form method="get">
+				<form th:action="@{/edit/{id}(id=${car.id})}" method="get">
 					<input type="submit" value="編集">
 				</form>
 			</td>

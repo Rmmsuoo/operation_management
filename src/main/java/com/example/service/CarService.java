@@ -28,4 +28,8 @@ public class CarService {
 		this.carMapper.insert(car);
 		System.out.println("自動採番されたID： " + car.getId());
 	}
+	
+	public Car findById(Integer id) {
+		return this.carMapper.findById(id);
+	}
 }
