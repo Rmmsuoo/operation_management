@@ -11,4 +11,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="findAll" resultMap="carMap">
 		SELECT * FROM CARS
 	</select>
+	<insert id="insert" useGeneratedKeys="true" keyColumn="ID"
+		keyProperty="id">
+		INSERT INTO CARS
+		(ID,NAME,PASSENGERS)VALUES(CAR_ID_SEQ.nextval,#{name},#{passengers})
+	</insert>
+
 </mapper>
