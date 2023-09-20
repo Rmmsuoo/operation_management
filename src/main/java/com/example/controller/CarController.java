@@ -50,4 +50,10 @@ public class CarController {
 		this.carService.update(id, carForm.getName(), carForm.getPassengers());
 		return "redirect:/index";
 	}
+
+	@PostMapping("/delete/{id}")
+	public String delete(@PathVariable("id") Integer id) {
+		this.carService.deleteById(id);
+		return "redirect:/index";
+	}
 }

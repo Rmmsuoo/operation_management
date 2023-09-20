@@ -40,4 +40,8 @@ public class CarService {
 		car.setPassengers(passengers);
 		this.carMapper.update(car);
 	}
+
+	public void deleteById(Integer id) {
+		this.carMapper.deleteById(id);
+	}
 }
