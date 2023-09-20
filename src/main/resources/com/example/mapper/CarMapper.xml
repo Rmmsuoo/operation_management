@@ -6,6 +6,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<resultMap type="com.example.entity.Car" id="carMap">
 		<id column="ID" property="id" />
 		<result column="NAME" property="name" />
+		<association property="driver"
+			javaType="com.example.entity.Driver">
+			<id column="D_ID" property="id" />
+			<result column="D_NAME" property="name" />
+		</association>
 	</resultMap>
 
 	<select id="findAll" resultMap="carMap">
@@ -30,8 +35,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 
 	<select id="findById" resultMap="carMap">
-		SELECT * FROM CARS WHERE ID =
-		#{id}
+		SELECT
+		C.ID
+		,C.NAME
+		,C.PASSENGERS
+		,D.ID AS D_ID
+		,D.NAME AS D_NAME
+		FROM
+		CARS C
+		INNER JOIN
+		DRIVERS D
+		ON
+		C.ID = D.CARS_ID
+		WHERE
+		C.ID =#{id}
 	</select>
 
 	<update id="update">
